@@ -20,10 +20,13 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
-
-Route.get('/links', 'LinksController.index')
-Route.post('/links', 'LinksController.store')
-Route.get('/links/:code/', 'LinksController.show')
+Route.group(() => {
+  Route.get('/', async () => {
+    return { hello: 'world' }
+  })
+  
+  Route.get('/links', 'LinksController.index')
+  Route.post('/links', 'LinksController.store')
+  Route.get('/links/:code/', 'LinksController.show')
+  
+}).prefix('api')
